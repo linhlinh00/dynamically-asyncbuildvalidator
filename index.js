@@ -1,28 +1,26 @@
-function numIslands(grid) {
-  if (grid.length === 0) return 0;
-  let count = 0;
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[0].length; j++) {
-      if (grid[i][j] === "1") {
-        dfs(grid, i, j);
-        count++;
+function letterCombinations(digits) {
+  if (digits.length === 0) return [];
+  const map = {
+    2: "abc",
+    3: "def",
+    4: "ghi",
+    5: "jkl",
+    6: "mno",
+    7: "pqrs",
+    8: "tuv",
+    9: "wxyz",
+  };
+  const result = [];
+  backtrack("", digits);
+  return result;
+  function backtrack(combination, nextDigits) {
+    if (nextDigits.length === 0) result.push(combination);
+    else {
+      const digit = nextDigits.substring(0, 1);
+      const letters = map[digit];
+      for (const letter of letters) {
+        backtrack(combination + letter, nextDigits.substring(1));
       }
     }
   }
-  return count;
-}
-function dfs(grid, i, j) {
-  if (
-    i < 0 ||
-    i >= grid.length ||
-    j < 0 ||
-    j >= grid[0].length ||
-    grid[i][j] === "0"
-  )
-    return;
-  grid[i][j] = "0";
-  dfs(grid, i + 1, j);
-  dfs(grid, i - 1, j);
-  dfs(grid, i, j + 1);
-  dfs(grid, i, j - 1);
 }
