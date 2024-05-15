@@ -1,5 +1,2 @@
-function sayHi() {
-  console.log("Hi!");
-}
-
-setTimeout(sayHi, 2000); // Run sayHi after 2 seconds
+const currentDate = new Date();
+console.log(currentDate); // Fri 2024-04-05T09:17:00.000Z
